@@ -19,16 +19,26 @@ public class RegistrarProductoForm extends JFrame {
         return texto != null && !texto.trim().isEmpty();
     }
 
-    public boolean validarValores(String texto) {
+    // Valida que el precio sea un número decimal positivo
+    public boolean validarPrecio(String texto) {
         try {
-            int n;
-            n = Integer.parseInt(texto);
-            return n >= 18 && texto.matches("\\d{2}");
-
+            double precio = Double.parseDouble(texto);
+            return precio >= 0;
         } catch (NumberFormatException e) {
             return false;
         }
     }
+
+    // Valida que el stock sea un número entero positivo
+    public boolean validarStock(String texto) {
+        try {
+            int stock = Integer.parseInt(texto);
+            return stock >= 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     public RegistrarProductoForm() {
 
@@ -66,9 +76,19 @@ public class RegistrarProductoForm extends JFrame {
                 String txtPrecioInput = txtPrecio.getText();
                 String txtStockInput = txtStock.getText();
 
-                JOptionPane.showMessageDialog(null, "Se registro con éxito");
+                if (validarCampos(txtCodigoInput) && validarCampos(txtNombreInput) &&
+                        validarCampos(txtDetalleInput) && validarCampos(txtPrecioInput) &&
+                        validarCampos(txtStockInput)) {
 
+                    if (validarPrecio(txtPrecioInput) && validarStock(txtStockInput)) {
+                        JOptionPane.showMessageDialog(null, "El producto se registró con éxito.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Precio y stock deben ser valores numéricos positivos.");
+                    }
 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Uno o más campos están vacíos.");
+                }
 
             }
         });
