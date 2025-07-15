@@ -19,7 +19,6 @@ public class RegistrarProductoForm extends JFrame {
         return texto != null && !texto.trim().isEmpty();
     }
 
-    // Valida que el precio sea un número decimal positivo
     public boolean validarPrecio(String texto) {
         try {
             double precio = Double.parseDouble(texto);
@@ -29,7 +28,6 @@ public class RegistrarProductoForm extends JFrame {
         }
     }
 
-    // Valida que el stock sea un número entero positivo
     public boolean validarStock(String texto) {
         try {
             int stock = Integer.parseInt(texto);
