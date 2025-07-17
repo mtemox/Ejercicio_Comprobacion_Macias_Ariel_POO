@@ -13,7 +13,8 @@ public class RegistrarProductoForm extends JFrame {
     private JButton btnRegistrarProducto;
     private JButton btnLimpiar;
     private JButton btnRegresar;
-    private JLabel RegistrarProductoPanel;
+    private JPanel RegistrarProductoPanel1;
+
 
     public boolean validarCampos(String texto) {
         return texto != null && !texto.trim().isEmpty();
@@ -39,9 +40,8 @@ public class RegistrarProductoForm extends JFrame {
 
 
     public RegistrarProductoForm() {
-
         setTitle("Registrar Producto");
-        setContentPane(RegistrarProductoPanel);
+        setContentPane(RegistrarProductoPanel1);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -57,6 +57,7 @@ public class RegistrarProductoForm extends JFrame {
                 txtStock.setText("");
             }
         });
+
         btnRegresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,6 +65,7 @@ public class RegistrarProductoForm extends JFrame {
                 dispose();
             }
         });
+
         btnRegistrarProducto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
